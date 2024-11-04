@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智绘创作 - 定价</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* 复用index.html的基础样式 */
+        :root {
+            --primary-color: #2d3436;
+            --accent-color: #00b894;
+            --bg-color: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --text-color: #ecf0f1;
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* 价格卡片特定样式 */
+        .pricing-container {
+            max-width: 1200px;
+            margin: 120px auto 0;
+            padding: 2rem;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .popular {
+            border: 2px solid var(--accent-color);
+        }
+
+        .popular::before {
+            content: "最受欢迎";
+            position: absolute;
+            top: 1rem;
+            right: -2rem;
+            background: var(--accent-color);
+            padding: 0.5rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        .price small {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .features li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .buy-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .buy-btn:hover {
+            background: #00a884;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" style="background: rgba(45, 52, 54, 0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);">
+        <div class="nav-content" style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo" style="font-size: 1.5rem; font-weight: 600; color: var(--accent-color);">智绘创作</div>
+            <div class="nav-links">
+                <a href="index.html" style="color: var(--text-color); text-decoration: none; margin-left: 1rem;">首页</a>
+                <a href="pricing.html" style="color: var(--text-color); text-decoration: none; margin-left: 1rem;">定价</a>
+                <a href="#" style="color: var(--text-color); text-decoration: none; margin-left: 1rem;">画廊</a>
+                <a href="#" style="color: var(--text-color); text-decoration: none; margin-left: 1rem;">关于</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pricing-container">
+        <div class="pricing-header">
+            <h1>选择适合您的计划</h1>
+            <p style="color: #666; margin-top: 1rem;">灵活的价格方案，满足不同创作需求</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- 基础版 -->
+            <div class="pricing-card">
+                <h2>体验版</h2>
+                <div class="price">
+                    ¥0<small>/月</small>
+                </div>
+                <ul class="features">
+                    <li>每日10次生成额度</li>
+                    <li>基础风格选择</li>
+                    <li>标准分辨率输出</li>
+                    <li>社区支持</li>
+                </ul>
+                <button class="buy-btn">免费开始</button>
+            </div>
+
+            <!-- 专业版 -->
+            <div class="pricing-card popular">
+                <h2>创作者版</h2>
+                <div class="price">
+                    ¥99<small>/月</small>
+                </div>
+                <ul class="features">
+                    <li>每日100次生成额度</li>
+                    <li>所有艺术风格</li>
+                    <li>高分辨率输出</li>
+                    <li>优先生成队列</li>
+                    <li>7×24小时支持</li>
+                </ul>
+                <button class="buy-btn">立即升级</button>
+            </div>
+
+            <!-- 企业版 -->
+            <div class="pricing-card">
+                <h2>企业版</h2>
+                <div class="price">
+                    ¥399<small>/月</small>
+                </div>
+                <ul class="features">
+                    <li>无限生成额度</li>
+                    <li>专属风格定制</li>
+                    <li>超高分辨率输出</li>
+                    <li>API接口访问</li>
+                    <li>专属客户经理</li>
+                    <li>商用授权</li>
+                </ul>
+                <button class="buy-btn">联系我们</button>
+            </div>
+        </div>
+
+        <!-- FAQ部分 -->
+        <section class="faq-section" style="background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius);">
+            <h2 style="margin-bottom: 2rem;">常见问题</h2>
+            <div class="faq-item" style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 1rem 0;">
+                <div class="faq-question" style="color: var(--accent-color);">如何选择合适的套餐？</div>
+                <div class="faq-answer">根据您的使用频率和需求选择。个人用户建议从体验版开始，企业用户建议直接选择企业版。</div>
+            </div>
+            <div class="faq-item" style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 1rem 0;">
+                <div class="faq-question" style="color: var(--accent-color);">是否支持随时升级套餐？</div>
+                <div class="faq-answer">是的，您可以随时升级到更高级的套餐，费用会按剩余天数比例计算。</div>
+            </div>
+            <div class="faq-item" style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 1rem 0;">
+                <div class="faq-question" style="color: var(--accent-color);">生成的图片版权归属？</div>
+                <div class="faq-answer">所有生成的图片版权归用户所有，企业版额外提供商用授权证明。</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: var(--primary-color); padding: 2rem; text-align: center; margin-top: 4rem;">
+        <div class="footer-content">
+            <p>© 2024 智绘创作. 保留所有权利</p>
+            <div style="margin-top: 1rem;">
+                <a href="#" style="color: var(--text-color); text-decoration: none; margin: 0 1rem;">使用条款</a>
+                <a href="#" style="color: var(--text-color); text-decoration: none; margin: 0 1rem;">隐私政策</a>
+                <a href="#" style="color: var(--text-color); text-decoration: none; margin: 0 1rem;">联系我们</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
